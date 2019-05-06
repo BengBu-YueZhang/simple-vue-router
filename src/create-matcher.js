@@ -1,6 +1,14 @@
 import createRouteMap from './create-route-map'
 import normalizeLocation from './util/normalizeLocation'
 
+// 获取包含查询参数和hash的完整路径
+function getFullPath (params) {
+}
+
+// 将location对象转换为完整的路径
+export function stringifyQuery (params) {
+}
+
 export function createMatcher (routes, router) {
 
   const {
@@ -54,7 +62,9 @@ export function createRoute (record, location) {
     query,
     // 不支持嵌套路由所以这里对matched属性的处理简单很多
     // 在vuerouter的源码中，matched需要通过迭代的方式向上查找父级
-    matched: [record]
+    matched: [record],
+    // 返回一个完整的路径
+    fullPath: getFullPath(location)
   }
   return Object.freeze(route)
 }

@@ -8,12 +8,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BengBu-YueZhang/very-simple-router.git"
+    "url": "git+https://github.com/BengBu-YueZhang/very-simple-router.git",
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BengBu-YueZhang/very-simple-router/issues"
   },
-  "homepage": "https://github.com/BengBu-YueZhang/very-simple-router#readme"
+  "homepage": "https://github.com/BengBu-YueZhang/very-simple-router#readme",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4"
+  }
 }
