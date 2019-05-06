@@ -43,7 +43,7 @@ function parseQuery(query) {
   return res
 }
 
-// 将query字符串和query对象做出一个整合
+// 将query字符串和query对象做出一个整合，形成一个query对象
 function resolveQuery(query = '', extraQuery = {}) {
   let parsedQuery
   parsedQuery = parseQuery(query)
@@ -53,6 +53,7 @@ function resolveQuery(query = '', extraQuery = {}) {
   return parsedQuery
 }
 
+// 对字符串或者对象进行处理，处理为path，hash，query的格式
 export default function rawnormalizeLocation (raw) {
 
   let next = null
@@ -61,9 +62,8 @@ export default function rawnormalizeLocation (raw) {
     // 如果raw是一个字符串路径进行处理
     next = { path: 'raw' }
   } else {
-    if (next._normalized) {
-      return next
-    } else if (next.name) {
+    next = raw
+    if (next.name) {
       return { ...raw }
     }
   }
@@ -74,7 +74,6 @@ export default function rawnormalizeLocation (raw) {
   const hash = next.hash || parsedPath.hash
 
   return {
-    _normalized: true,
     path,
     query,
     hash
