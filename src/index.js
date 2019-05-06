@@ -1,5 +1,5 @@
-import HTML5History from './history'
-import createMatcher from './create-matcher'
+import { HTML5History } from './history'
+import { createMatcher } from './create-matcher'
 
 class VueRouter {
   static install () {

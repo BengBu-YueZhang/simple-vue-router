@@ -1,7 +1,7 @@
 import createRouteMap from './create-route-map'
 import normalizeLocation from './util/normalizeLocation'
 
-export default function createMatcher(routes, router) {
+export function createMatcher (routes, router) {
 
   const {
     pathList,
@@ -45,14 +45,15 @@ export default function createMatcher(routes, router) {
   }
 }
 
-function createRoute (record, location) {
+export function createRoute (record, location) {
   let query = location.query
   const route = {
     name: location.name || (record && record.name),
     path: location.path || '/',
     hash: location.hash || '',
     query,
-    // 不支持嵌套路由所以这里的处理简单很多
+    // 不支持嵌套路由所以这里对matched属性的处理简单很多
+    // 在vuerouter的源码中，matched需要通过迭代的方式向上查找父级
     matched: [record]
   }
   return Object.freeze(route)
