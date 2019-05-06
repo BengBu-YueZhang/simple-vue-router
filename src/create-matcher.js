@@ -51,7 +51,9 @@ function createRoute (record, location) {
     name: location.name || (record && record.name),
     path: location.path || '/',
     hash: location.hash || '',
-    query
+    query,
+    // 不支持嵌套路由所以这里的处理简单很多
+    matched: [record]
   }
   return Object.freeze(route)
 }
