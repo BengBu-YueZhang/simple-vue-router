@@ -2,6 +2,7 @@ import createRouteMap from './create-route-map'
 import normalizeLocation from './util/normalizeLocation'
 
 export default function createMatcher(routes, router) {
+
   const {
     pathList,
     pathMap,
@@ -9,10 +10,13 @@ export default function createMatcher(routes, router) {
   } = createRouteMap(routes)
 
   // match函数会根据raw参数, raw参数可以是字符串或者对象。返回对应的路由对象
+  // 我们主要使用match方法，在更新路由的时候，对VueRoute对象上的
   // 看源码的时候，个人认为这块是最复杂的，最难以理解的
   // 由于我们没有实现params动态路由，所以相对于VueRouter的源码简单很多
   function match(raw) {
 
+    // 对raw进行解析，如果raw是path字符串会解析为对象
+    // 同时对path中的query，或者query字段进行解析
     const location = normalizeLocation(raw)
     const { name } = location
 
@@ -27,13 +31,12 @@ export default function createMatcher(routes, router) {
       for (let i = 0; i < pathList.length; i++) {
         const path = pathList[i]
         const record = pathMap[path]
-        // 由于没有实现动态路由，所以我们直接对path进行比较
+        // 由于没有实现动态路由，所以我们直接对path进行比较，不用考虑动态路由的情况
         if (record.path === location.path) {
           return createRoute(record, location)
         }
       }
     }
-
     return createRoute(null, location)
   }
 
@@ -43,4 +46,12 @@ export default function createMatcher(routes, router) {
 }
 
 function createRoute (record, location) {
+  let query = location.query
+  const route = {
+    name: location.name || (record && record.name),
+    path: location.path || '/',
+    hash: location.hash || '',
+    query
+  }
+  return Object.freeze(route)
 }
