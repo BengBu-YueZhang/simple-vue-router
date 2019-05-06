@@ -1,7 +1,6 @@
 export default function createRouteMap(params) {
 
   // pathList, pathMap, nameMap分别是路径的列表, 路径与路由对象的映射, 路由名称与路由对象的映射
-  
   const pathList = []
   const pathMap = Object.create(null)
   const nameMap = Object.create(null)
@@ -18,5 +17,24 @@ export default function createRouteMap(params) {
 }
 
 function addRouteRecord(pathList, pathMap, nameMap, route) {
-  
+  const { path, name } = route
+
+  const record = {
+    name,
+    path,
+    components: route.components,
+    redirect: route.redirect,
+    beforeEnter: route.beforeEnter
+  }
+
+  if (!pathMap[record.path]) {
+    pathList.push(record.path)
+    pathMap[record.path] = record
+  }
+
+  if (name) {
+    if (!nameMap[name]) {
+      nameMap[name] = record
+    }
+  }
 }

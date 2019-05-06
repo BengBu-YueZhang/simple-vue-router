@@ -1,0 +1,19 @@
+{
+  "name": "very-simple-router",
+  "version": "1.0.0",
+  "description": "very-simple-router是vue-router的最简略实现，实现了VueRouter的最基本核心功能，组件的切换以及路由守卫。目前插件只支持history模式。暂不支持嵌套路由，动态添加路由，滚动行为，以及keep-live等复杂功能。请大家见谅。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BengBu-YueZhang/very-simple-router.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BengBu-YueZhang/very-simple-router/issues"
+  },
+  "homepage": "https://github.com/BengBu-YueZhang/very-simple-router#readme"
+}
