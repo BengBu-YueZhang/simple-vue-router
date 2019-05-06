@@ -1,0 +1,1 @@
+import createRouteMap from '../src/create-route-map'

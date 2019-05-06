@@ -1,4 +1,4 @@
-export default function createRouteMap(params) {
+export default function createRouteMap(routes) {
 
   // pathList, pathMap, nameMap分别是路径的列表, 路径与路由对象的映射, 路由名称与路由对象的映射
   const pathList = []

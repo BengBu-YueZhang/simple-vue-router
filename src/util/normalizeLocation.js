@@ -27,11 +27,8 @@ function parseQuery(query) {
   }
   query.split('&').forEach(param => {
     const parts = param.replace(/\+/g, ' ').split('=')
-    const key = decode(parts.shift())
-    const val = parts.length > 0 ?
-      decode(parts.join('=')) :
-      null
-
+    const key = decodeURIComponent(parts.shift())
+    const val = parts.length > 0 ? decodeURIComponent(parts.join('=')) : null
     if (res[key] === undefined) {
       res[key] = val
     } else if (Array.isArray(res[key])) {
