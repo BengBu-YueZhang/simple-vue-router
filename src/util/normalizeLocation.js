@@ -13,8 +13,14 @@ export default function rawnormalizeLocation (raw) {
   if (typeof raw === 'string') {
     next = { path: 'raw' }
   } else {
-    return extend({}, raw)
+    if (next._normalized) {
+      return next
+    } else if (next.name) {
+      return extend({}, raw)
+    }
   }
 
-  
+  return {
+    _normalized: true
+  }
 }
