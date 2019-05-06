@@ -22,8 +22,7 @@ function addRouteRecord(pathList, pathMap, nameMap, route) {
   const record = {
     name,
     path,
-    components: route.components,
-    redirect: route.redirect,
+    component: route.component,
     beforeEnter: route.beforeEnter
   }
 
