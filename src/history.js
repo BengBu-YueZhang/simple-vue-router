@@ -30,10 +30,13 @@ class BaseRouter {
     this.cb = cb
   }
 
-  transitionTo(location, onComplete, onAbort) {
-  }
-
-  confirmTransition () {
+  transitionTo(location, onComplete) {
+    // 使用match方法，获取将要更新的路由对象
+    const route = this.router.match(location)
+    // 更新当前路由
+    this.updateRoute(route)
+    // 更新浏览器的url
+    onComplete(route)
   }
 
   updateRoute () {
@@ -47,33 +50,30 @@ export class HTML5History extends BaseRouter {
     this.setupListeners()
   }
 
-  // 添加对popstate事件的监听
+  // 添加对popstate事件的监听, replaceState，pushState不会触发popstate事件
+  // go，back，或者点击前进后退的按钮，会触发popstate事件
   setupListeners () {
     window.addEventListener('popstate', e => {
     })
   }
 
   go (n) {
-    window.history.go(n)
+    window.history.gohuo
   }
 
   push(location) {
-    // 路由切换成功的回调
+    // 路由切换成功的回调，我们需要手动的更新浏览器的url
     const complete = (route) => {
-      pushState(route.fullPath)
+      pushState(route.path)
     }
-    // 路由切换中止的回调
-    const abort = (route) => {}
-    this.transitionTo(location, complete, abort)
+    this.transitionTo(location, complete)
   }
 
   replace(location) {
-    // 路由切换成功的回调
+    // 路由切换成功的回调，需要手动的更新浏览器的url
     const complete = (route) => {
-      replaceState(route.fullPath)
+      replaceState(route.path)
     }
-    // 路由切换中止的回调
-    const abort = (route) => {}
-    this.transitionTo(location, complete, abort)
+    this.transitionTo(location, complete)
   }
 }
