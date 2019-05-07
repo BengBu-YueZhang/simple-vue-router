@@ -2,13 +2,11 @@ import createRouteMap from './create-route-map'
 import normalizeLocation from './util/normalizeLocation'
 
 export function createMatcher (routes, router) {
-
   const {
     pathList,
     pathMap,
     nameMap
   } = createRouteMap(routes)
-
   // match函数会根据raw参数, raw参数可以是字符串或者对象。返回对应的路由对象
   // 我们主要使用match方法，在更新路由的时候，对VueRoute对象上的
   // 看源码的时候，个人认为这块是最复杂的，最难以理解的
@@ -39,7 +37,6 @@ export function createMatcher (routes, router) {
     }
     return createRoute(null, location)
   }
-
   return {
     match
   }

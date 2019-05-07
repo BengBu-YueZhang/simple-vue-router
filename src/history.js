@@ -36,9 +36,6 @@ class BaseRouter {
   confirmTransition () {
   }
 
-  runQueue () {
-  }
-
   updateRoute () {
   }
 }

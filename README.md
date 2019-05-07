@@ -1,6 +1,6 @@
 # very-simple-router
 
-very-simple-router是我在学习vue-router的源码后，参照(抄🤦‍)vue-router的源码，实现的最简单的版本，实现了VueRouter的最基本核心功能，组件的切换以及路由守卫。
+very-simple-router是我在学习vue-router的源码后，参照(抄🤦‍)vue-router的源码，实现的最简单的版本，实现了VueRouter的最基本核心功能，组件的切换更新Vue组件。
 
 虽然不能用于生产环境，但是对于学习了解VueRouter原理还是有一定帮助的。目前插件只支持history模式。暂不支持嵌套路由，动态添加路由, 动态路由，滚动行为，以及keep-live等复杂功能。请大家见谅。
 

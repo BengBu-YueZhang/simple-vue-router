@@ -31,7 +31,6 @@ export default function rawnormalizeLocation (raw) {
   const parsedPath = parsePath(next.path || '')
   const path = parsedPath.path
   const hash = next.hash || parsedPath.hash
-
   return {
     path,
     query: next.query,
