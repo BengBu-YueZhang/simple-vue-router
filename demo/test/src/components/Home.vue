@@ -7,6 +7,10 @@
 
 <script>
 export default {
+  created () {
+    console.log(this.$route)
+  },
+
   methods: {
     handleClick () {
       this.$router.push('/other')
