@@ -16,8 +16,8 @@ export function replaceState(url) {
 }
 
 export function getHash() {
-  let href = window.location.href
-  let { path } = parsePath(href)
+  let pathname = window.location.pathname 
+  let { path } = parsePath(pathname)
   return path
 }
 
