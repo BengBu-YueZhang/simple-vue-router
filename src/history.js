@@ -15,6 +15,12 @@ export function replaceState(url) {
   pushState(url, true)
 }
 
+export function getHash() {
+  let href = window.location.href
+  let { path } = parsePath(href)
+  return path
+}
+
 class BaseRouter {
   constructor (router) {
     // vuerouter的实例
@@ -57,9 +63,7 @@ export class HTML5History extends BaseRouter {
   // go，back，或者点击前进后退的按钮，会触发popstate事件
   setupListeners () {
     window.addEventListener('popstate', e => {
-      let href = window.location.href
-      let { path } = parsePath(href)
-      this.transitionTo(path)
+      this.transitionTo(getHash())
     })
   }
 
@@ -81,5 +85,9 @@ export class HTML5History extends BaseRouter {
       replaceState(route.path)
     }
     this.transitionTo(location, complete)
+  }
+
+  getCurrentLocation () {
+    return getHash()
   }
 }

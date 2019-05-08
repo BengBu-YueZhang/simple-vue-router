@@ -18,7 +18,35 @@ class VueRouter {
     return this.matcher.match(raw)
   }
 
-  init () {
+  // app为vue的实例
+  init (app) {
+    this.app = app
+    const history = this.history
+    history.transitionTo(history.getCurrentLocation())
+    history.listen(route => {
+      // 更新实例上的_route属性
+      this.app._route = route
+    })
+  }
+
+  push(location) {
+    this.history.push(location)
+  }
+
+  replace(location) {
+    this.history.replace(location)
+  }
+  
+  go (n) {
+    this.history.go(n)
+  }
+
+  back () {
+    this.go(-1)
+  }
+
+  forward () {
+    this.go(1)
   }
 }
 
