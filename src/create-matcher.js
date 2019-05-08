@@ -1,5 +1,5 @@
 import createRouteMap from './create-route-map'
-import normalizeLocation from './util/normalizeLocation'
+import { rawnormalizeLocation } from './util/normalizeLocation'
 
 export function createMatcher (routes, router) {
   const {
@@ -15,7 +15,7 @@ export function createMatcher (routes, router) {
 
     // 对raw进行解析，如果raw是path字符串会解析为对象
     // 同时对path中的query，或者query字段进行解析
-    const location = normalizeLocation(raw)
+    const location = rawnormalizeLocation(raw)
     const { name } = location
 
     if (name) {

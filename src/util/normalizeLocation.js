@@ -1,6 +1,6 @@
 // 对路径进行拆分，区分出hash，path，以及query
 // 只支持html5 history模式，所以不对"#"进行处理
-function parsePath (path) {
+export function parsePath (path) {
   let hash = ''
   let query = ''
   const queryIndex = path.indexOf('?')
@@ -16,7 +16,7 @@ function parsePath (path) {
 }
 
 // 对字符串或者对象进行处理，处理为path，hash，query的格式
-export default function rawnormalizeLocation (raw) {
+export function rawnormalizeLocation (raw) {
   let next = null
   if (typeof raw === 'string') {
     // 如果raw是一个字符串路径进行处理

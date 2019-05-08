@@ -1,4 +1,5 @@
 import { createRoute } from './create-matcher'
+import { parsePath } from './util/normalizeLocation'
 
 export function pushState(url, replace) {
   if (replace) {
@@ -36,10 +37,12 @@ class BaseRouter {
     // 更新当前路由
     this.updateRoute(route)
     // 更新浏览器的url
-    onComplete(route)
+    onComplete && onComplete(route)
   }
 
-  updateRoute () {
+  updateRoute(route) {
+    this.current = route
+    this.cb && this.cb(route)
   }
 }
 
@@ -54,11 +57,14 @@ export class HTML5History extends BaseRouter {
   // go，back，或者点击前进后退的按钮，会触发popstate事件
   setupListeners () {
     window.addEventListener('popstate', e => {
+      let href = window.location.href
+      let { path } = parsePath(href)
+      this.transitionTo(path)
     })
   }
 
   go (n) {
-    window.history.gohuo
+    window.history.go(n)
   }
 
   push(location) {
