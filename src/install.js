@@ -11,6 +11,9 @@ export default function install (Vue) {
         this._router.init(this)
         // 劫持Vue实例的_route(属性)
         Vue.util.defineReactive(this, '_route', this._router.history.current)
+      } else {
+        // 实例的_routerRoot属性指向vue实例
+        this._routerRoot = (this.$parent && this.$parent._routerRoot) || this
       }
     }
   })
