@@ -74,7 +74,7 @@ export class HTML5History extends BaseRouter {
   push(location) {
     // 路由切换成功的回调，我们需要手动的更新浏览器的url
     const complete = (route) => {
-      pushState(route.path)
+      pushState(route.fullPath)
     }
     this.transitionTo(location, complete)
   }
@@ -82,7 +82,7 @@ export class HTML5History extends BaseRouter {
   replace(location) {
     // 路由切换成功的回调，需要手动的更新浏览器的url
     const complete = (route) => {
-      replaceState(route.path)
+      replaceState(route.fullPath)
     }
     this.transitionTo(location, complete)
   }

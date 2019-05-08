@@ -1,6 +1,19 @@
 import createRouteMap from './create-route-map'
 import { rawnormalizeLocation } from './util/normalizeLocation'
 
+export function getFullPath (location) {
+  if (location.query) {
+    let query = ''
+    for (let key in location.query) {
+      query += `${key}=${location.query[key]}&`
+    }
+    query = query.slice(0, query.length - 1)
+    return `${location.path}?${query}`
+  } else {
+    return location.path
+  }
+}
+
 export function createMatcher (routes, router) {
   const {
     pathList,
@@ -49,6 +62,7 @@ export function createRoute (record, location) {
     path: location.path || '/',
     hash: location.hash || '',
     query,
+    fullPath: getFullPath(location),
     // 不支持嵌套路由所以这里对matched属性的处理简单很多
     // 在vuerouter的源码中，matched需要通过迭代的方式向上查找父级
     matched: [record]
