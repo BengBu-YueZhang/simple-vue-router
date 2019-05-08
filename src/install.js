@@ -2,7 +2,6 @@ import View from './components/router-view'
 
 export default function install (Vue) {
 
-  
   Vue.mixin({
     beforeCreate () {
       if (this.$options.router) {
