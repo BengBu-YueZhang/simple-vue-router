@@ -20,7 +20,7 @@ export function rawnormalizeLocation (raw) {
   let next = null
   if (typeof raw === 'string') {
     // 如果raw是一个字符串路径进行处理
-    next = { path: 'raw' }
+    next = { path: raw }
   } else {
     next = raw
     // 如果包含name直接返回

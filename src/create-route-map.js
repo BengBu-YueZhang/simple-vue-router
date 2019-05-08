@@ -18,8 +18,7 @@ function addRouteRecord(pathList, pathMap, nameMap, route) {
   const record = {
     name,
     path,
-    component: route.component,
-    beforeEnter: route.beforeEnter
+    component: route.component
   }
   if (!pathMap[record.path]) {
     pathList.push(record.path)
