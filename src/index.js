@@ -1,10 +1,8 @@
 import { HTML5History } from './history'
 import { createMatcher } from './create-matcher'
+import install from './install'
 
 class VueRouter {
-  static install () {
-  }
-
   constructor(options = {}) {
     this.app = null
     this.options = options
@@ -49,5 +47,7 @@ class VueRouter {
     this.go(1)
   }
 }
+
+VueRouter.install = install
 
 export default VueRouter
